@@ -57,6 +57,7 @@ public class BarcodeScanner extends CordovaPlugin {
     private static final String EMAIL_TYPE = "EMAIL_TYPE";
     private static final String PHONE_TYPE = "PHONE_TYPE";
     private static final String SMS_TYPE = "SMS_TYPE";
+    private static final String BULK_SCAN = "bulkScan";
 
     private static final String LOG_TAG = "BarcodeScanner";
 
@@ -174,7 +175,7 @@ public class BarcodeScanner extends CordovaPlugin {
                                 Log.i("CordovaLog", e.getLocalizedMessage());
                             }
                         }
-
+                        intentScan.putExtra(Intents.Scan.BULK_SCAN, obj.optBoolean(BULK_SCAN, false) ? 1 : 0);
                         intentScan.putExtra(Intents.Scan.CAMERA_ID, obj.optBoolean(PREFER_FRONTCAMERA, false) ? 1 : 0);
                         intentScan.putExtra(Intents.Scan.SHOW_FLIP_CAMERA_BUTTON, obj.optBoolean(SHOW_FLIP_CAMERA_BUTTON, false));
                         intentScan.putExtra(Intents.Scan.SHOW_TORCH_BUTTON, obj.optBoolean(SHOW_TORCH_BUTTON, false));
